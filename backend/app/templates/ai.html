@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinguaTeacher AI</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="topbar">
+
+    <div class="logo">
+        🧠 LinguaTeacher AI
+    </div>
+
+    <div class="top-right">
+
+        <div id="status" class="status disconnected">
+            🔴 Offline
+        </div>
+
+        <div id="interaction-status" class="interaction-status hidden"></div>
+
+        <button class="icon-btn">🌙</button>
+
+        <button class="icon-btn">⚙️</button>
+
+        <button class="icon-btn">👤</button>
+
+    </div>
+
+</header>
+
+<main>
+
+<div class="auth-section" id="auth-section">
+
+    <h2>Gemini Live AI</h2>
+
+    <p>Click Connect to start.</p>
+
+    <button id="connectBtn" class="btn">
+        Connect
+    </button>
+
+</div>
+
+<div class="session-end-section hidden" id="session-end-section">
+
+    <h2>Session Ended</h2>
+
+    <button id="restartBtn" class="btn">
+        Restart
+    </button>
+
+</div>
+
+<div class="app-section hidden" id="app-section">
+
+<div class="app-grid">
+
+<div class="left-panel">
+
+<div class="video-container">
+
+<div id="video-placeholder">
+Start camera
+</div>
+
+<video
+id="video-preview"
+autoplay
+playsinline
+muted>
+</video>
+
+</div>
+
+<div class="controls">
+
+<button id="micBtn">
+🎤 Start Mic
+</button>
+
+<button id="cameraBtn">
+📷 Camera
+</button>
+
+<button id="screenBtn">
+🖥 Screen
+</button>
+
+<button id="disconnectBtn">
+Disconnect
+</button>
+
+</div>
+
+</div>
+
+<div class="right-panel">
+
+<div id="chat-log" class="chat-log"></div>
+
+<div class="input-area">
+
+<input
+id="textInput"
+type="text"
+placeholder="Type message...">
+
+<button id="sendBtn">
+Send
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<script src="/static/js/media-handler.js"></script>
+<script src="/static/js/gemini-client.js"></script>
+<script src="/static/js/pcm-processor.js"></script>
+<script src="/static/js/gemini-main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LinguaTeacher AI</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        🎓 LinguaTeacher AI
+    </div>
+
+    <a href="/">🏠 Dashboard</a>
+    <a href="/german">🇩🇪 German</a>
+    <a href="/english">🇬🇧 English</a>
+    <a href="/ai">🤖 AI Teacher</a>
+    <a href="/about">ℹ️ About</a>
+    <a href="/profile">👤 Profile</a>
+
+</div>
+
+<div class="content">
+
+    <h1>🤖 AI Teacher</h1>
+
+    <div id="status" class="status">
+        Not Connected
+    </div>
+
+    <div id="interaction-status" class="interaction-status hidden"></div>
+
+    <div id="chat-log" class="chat-box">
+
+        <div class="message gemini">
+            👋 Привет!
+
+            <br><br>
+
+            Я LinguaTeacher AI.
+
+            <br>
+
+            Нажмите «Connect», затем можете говорить голосом,
+            писать сообщения или показывать камеру.
+        </div>
+
+    </div>
+
+    <div class="chat-input">
+
+        <input
+            id="textInput"
+            type="text"
+            placeholder="Введите сообщение..."
+        >
+
+        <button id="sendBtn">
+            ➤
+        </button>
+
+    </div>
+
+    <br>
+
+    <div>
+
+        <button id="connectBtn">
+            🔗 Connect
+        </button>
+
+        <button id="micBtn">
+            🎤 Start Mic
+        </button>
+
+        <button id="cameraBtn">
+            📷 Camera
+        </button>
+
+        <button id="screenBtn">
+            🖥️ Screen
+        </button>
+
+        <button id="disconnectBtn">
+            ❌ Disconnect
+        </button>
+
+    </div>
+
+    <br>
+
+    <video
+        id="video-preview"
+        autoplay
+        muted
+        playsinline
+        width="420"
+    ></video>
+
+    <div id="video-placeholder">
+        Camera Preview
+    </div>
+
+</div>
+
+<script src="/static/js/gemini-client.js"></script>
+<script src="/static/js/media-handler.js"></script>
+<script src="/static/js/pcm-processor.js"></script>
+<script src="/static/js/gemini-main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,423 @@
+/* ===========================
+   LinguaTeacher AI
+   Modern UI
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Inter,Arial,sans-serif;
+
+    background:linear-gradient(
+        135deg,
+        #eef2ff,
+        #f8fafc,
+        #e0f2fe
+    );
+
+    color:#111827;
+
+    min-height:100vh;
+
+}
+
+/* Container */
+
+.container{
+
+    width:100%;
+    max-width:1500px;
+
+    margin:auto;
+
+    padding:35px;
+
+}
+
+/* Header */
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+    background:white;
+
+    padding:22px 30px;
+
+    border-radius:24px;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.08);
+
+}
+
+header h1{
+
+    font-size:34px;
+
+    font-weight:800;
+
+}
+
+/* Status */
+
+.status{
+
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    font-weight:700;
+
+    background:#f3f4f6;
+
+}
+
+.disconnected{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+}
+
+.connected{
+
+    background:#dcfce7;
+
+    color:#16a34a;
+
+}
+
+/* Main */
+
+main{
+
+    margin-top:20px;
+
+}
+
+/* Login Card */
+
+.auth-section,
+.session-end-section{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.08);
+
+}
+
+.auth-section h2,
+.session-end-section h2{
+
+    font-size:38px;
+
+    margin-bottom:15px;
+
+}
+
+.auth-section p{
+
+    color:#6b7280;
+
+    margin-bottom:30px;
+
+}
+
+/* Buttons */
+
+button{
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    border-radius:14px;
+
+    padding:15px 36px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(37,99,235,.35);
+
+}
+
+/* Hidden */
+
+.hidden{
+
+    display:none;
+
+}
+
+/* Grid */
+
+.app-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+    430px
+
+    1fr;
+
+    gap:30px;
+
+}
+
+/* Left Panel */
+
+.left-panel{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:25px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.08);
+
+}
+
+/* Video */
+
+.video-container{
+
+    width:100%;
+
+    aspect-ratio:1;
+
+    background:#f3f4f6;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+#video-placeholder{
+
+    color:#6b7280;
+
+    font-size:22px;
+
+}
+
+video{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:none;
+
+}
+
+/* Controls */
+
+.controls{
+
+    display:grid;
+
+    gap:15px;
+
+}
+
+.controls button{
+
+    border:none;
+
+    background:#2563eb;
+
+    color:white;
+
+    border-radius:16px;
+
+    padding:16px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.controls button:hover{
+
+    transform:translateY(-3px);
+
+    background:#1d4ed8;
+
+}
+
+/* Right Panel */
+
+.right-panel{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.08);
+
+}
+
+/* Chat */
+
+.chat-log{
+
+    flex:1;
+
+    min-height:550px;
+
+    max-height:650px;
+
+    overflow-y:auto;
+
+    padding:20px;
+
+    background:#f8fafc;
+
+    border-radius:18px;
+
+    margin-bottom:20px;
+
+}
+
+/* Input */
+
+.input-area{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.input-area input{
+
+    flex:1;
+
+    border:none;
+
+    background:#f3f4f6;
+
+    border-radius:16px;
+
+    padding:16px;
+
+    font-size:17px;
+
+}
+
+.input-area input:focus{
+
+    outline:2px solid #2563eb;
+
+}
+
+.input-area button{
+
+    border:none;
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:16px 30px;
+
+    border-radius:16px;
+
+    font-weight:700;
+
+}
+
+.input-area button:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.app-grid{
+
+grid-template-columns:1fr;
+
+}
+
+header{
+
+flex-direction:column;
+
+gap:15px;
+
+text-align:center;
+
+}
+
+.container{
+
+padding:15px;
+
+}
+
+}
