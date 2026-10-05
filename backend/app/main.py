@@ -95,7 +95,19 @@ def profile():
 @app.get("/about")
 def about():
     return load_page("about.html")
+@app.get("/login")
+def login():
+    return load_page("login.html")
 
+
+@app.get("/register")
+def register():
+    return load_page("register.html")
+
+
+@app.get("/forgot-password")
+def forgot_password():
+    return load_page("forgot_password.html")
 
 # ---------- API ----------
 
