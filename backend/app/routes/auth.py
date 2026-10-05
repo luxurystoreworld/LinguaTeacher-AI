@@ -13,6 +13,8 @@ pwd_context = CryptContext(
 )
 
 
+# ---------------- REGISTER ----------------
+
 @router.post("/register")
 def register(
     username: str = Form(...),
@@ -28,9 +30,7 @@ def register(
             "message": "Passwords do not match."
         }
 
-    existing = db.query(User).filter(
-        User.email == email
-    ).first()
+    existing = db.query(User).filter(User.email == email).first()
 
     if existing:
         return {
@@ -38,13 +38,10 @@ def register(
             "message": "Email already exists."
         }
 
-    hashed_password = pwd_context.hash(password)
-
     user = User(
-    username=username,
-    email=email,
-    password=pwd_context.hash(password),
-    
+        username=username,
+        email=email,
+        password=pwd_context.hash(password),
     )
 
     db.add(user)
@@ -55,10 +52,9 @@ def register(
         "success": True,
         "message": "Registration successful."
     }
-    from passlib.context import CryptContext
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+# ---------------- LOGIN ----------------
 
 @router.post("/login")
 def login(
@@ -72,18 +68,18 @@ def login(
     if not user:
         return {
             "success": False,
-            "message": "User not found"
+            "message": "User not found."
         }
 
     if not pwd_context.verify(password, user.password):
         return {
             "success": False,
-            "message": "Wrong password"
+            "message": "Wrong password."
         }
 
     return {
         "success": True,
-        "message": "Login successful",
+        "message": "Login successful.",
         "username": user.username,
         "email": user.email
     }
