@@ -3,4 +3,4 @@
 *.bak
 __pycache__/
 *.pyc
-*.pyo
+*.pyolinguateacher.db
