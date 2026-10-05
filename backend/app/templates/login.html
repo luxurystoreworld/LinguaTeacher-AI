@@ -27,29 +27,47 @@
 
 <h2 class="text-center mb-4">
 
-Login
+Welcome Back
 
 </h2>
 
-<form>
+<form id="loginForm">
 
 <div class="mb-3">
 
-<label>Email</label>
+<label class="form-label">
 
-<input type="email" class="form-control">
+Email
+
+</label>
+
+<input
+type="email"
+name="email"
+class="form-control"
+required>
 
 </div>
 
 <div class="mb-3">
 
-<label>Password</label>
+<label class="form-label">
 
-<input type="password" class="form-control">
+Password
+
+</label>
+
+<input
+type="password"
+name="password"
+class="form-control"
+required>
 
 </div>
 
-<button class="btn btn-primary w-100">
+<button
+type="submit"
+class="btn btn-primary w-100">
 
 Login
 
@@ -73,7 +91,7 @@ Don't have an account?
 
 <a href="/register">
 
-Register
+Create Account
 
 </a>
 
@@ -86,6 +104,40 @@ Register
 </div>
 
 </div>
+
+<script>
+
+document.getElementById("loginForm").addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    const response = await fetch("/login",{
+
+        method:"POST",
+
+        body:formData
+
+    });
+
+    const data = await response.json();
+
+    if(data.success){
+
+        alert("Welcome " + data.username + "!");
+
+        window.location.href="/profile";
+
+    }else{
+
+        alert(data.message);
+
+    }
+
+});
+
+</script>
 
 </body>
 
