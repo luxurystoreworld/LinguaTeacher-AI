@@ -11,7 +11,6 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
 from backend.app.gemini_live import GeminiLive
-from backend.app.routes.chat import router as chat_router
 from backend.app.routes.voice import router as voice_router
 
 app = FastAPI(
@@ -90,6 +89,5 @@ def about():
 
 
 # Подключаем API чата
-app.include_router(chat_router)
 app.include_router(voice_router)
 app.include_router(gemini_ws_router)
