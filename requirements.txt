@@ -4,3 +4,7 @@ jinja2
 python-dotenv
 google-genai
 websockets
+sqlalchemy
+passlib[bcrypt]
+python-jose[cryptography]
+email-validator
