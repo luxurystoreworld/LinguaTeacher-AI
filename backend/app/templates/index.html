@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -10,83 +11,193 @@
 
 <link rel="stylesheet" href="/static/css/style.css">
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-<nav class="topbar">
+<!-- ===================== NAVBAR ===================== -->
+
+<nav class="navbar">
 
 <div class="logo">
+
 🌍 LinguaTeacher AI
+
 </div>
 
-<div class="top-right">
+<div class="nav-links">
 
-<a href="/ai" class="nav-btn">🤖 AI</a>
+<a href="/">Home</a>
 
-<a href="/profile" class="nav-btn">👤 Profile</a>
+<a href="/ai">AI Teacher</a>
 
-<a href="/about" class="nav-btn">ℹ About</a>
+<a href="/about">About</a>
+
+<a href="/profile">Profile</a>
+
+<button class="login-btn" onclick="openLogin()">
+
+Login
+
+</button>
+
+<button class="register-btn" onclick="openRegister()">
+
+Register
+
+</button>
 
 </div>
 
 </nav>
 
+<!-- ===================== HERO ===================== -->
+
 <section class="hero">
 
-<h1 class="title">
-Learn Languages with AI
+<div class="hero-left">
+
+<h1>
+
+Learn Languages
+
+<br>
+
+with Artificial Intelligence
+
 </h1>
 
-<p class="subtitle">
-Speak naturally with your personal AI teacher.
-Practice German, English, Russian and Tajik.
+<p>
+
+Practice speaking with your AI teacher.
+
+Improve your German, English,
+
+Russian and Tajik every day.
+
 </p>
 
+<div class="hero-buttons">
+
 <a href="/ai" class="start-btn">
+
 🚀 Start Learning
+
 </a>
 
+<a href="/about" class="secondary-btn">
+
+Learn More
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="hero-card">
+
+🤖
+
+<h2>
+
+AI Teacher
+
+</h2>
+
+<p>
+
+Available 24/7
+
+</p>
+
+</div>
+
+</div>
+
 </section>
+
+<!-- ===================== LANGUAGES ===================== -->
 
 <section class="languages">
 
-<div class="language-card">
+<h2>
+
+Choose Your Language
+
+</h2>
+
+<div class="language-grid">
+    <div class="language-card">
+
 🇩🇪
+
 <h3>German</h3>
+
 <p>A1 → C2</p>
+
 </div>
 
 <div class="language-card">
+
 🇬🇧
+
 <h3>English</h3>
+
 <p>A1 → C2</p>
+
 </div>
 
 <div class="language-card">
+
 🇷🇺
+
 <h3>Russian</h3>
+
 <p>Native</p>
+
 </div>
 
 <div class="language-card">
+
 🇹🇯
+
 <h3>Tajik</h3>
+
 <p>Native</p>
+
+</div>
+
 </div>
 
 </section>
 
+<!-- ================= FEATURES ================= -->
+
 <section class="features">
+
+<h2>
+
+Why LinguaTeacher AI?
+
+</h2>
+
+<div class="feature-grid">
 
 <div class="feature-card">
 
 🎤
 
-<h2>Voice Conversation</h2>
+<h3>Voice Conversation</h3>
 
 <p>
-Talk with AI naturally.
+
+Talk naturally with AI in real time.
+
 </p>
 
 </div>
@@ -95,10 +206,12 @@ Talk with AI naturally.
 
 🤖
 
-<h2>AI Teacher</h2>
+<h3>Smart AI Teacher</h3>
 
 <p>
-Corrects mistakes instantly.
+
+Grammar correction and pronunciation.
+
 </p>
 
 </div>
@@ -107,21 +220,232 @@ Corrects mistakes instantly.
 
 📈
 
-<h2>Progress</h2>
+<h3>Daily Progress</h3>
 
 <p>
-Track your learning.
+
+Track XP, streak and achievements.
+
 </p>
+
+</div>
+
+<div class="feature-card">
+
+🧠
+
+<h3>Personal Memory</h3>
+
+<p>
+
+AI remembers your learning history.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+🌎
+
+<h3>Many Languages</h3>
+
+<p>
+
+German, English, Russian, Tajik and more.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+🏆
+
+<h3>Gamification</h3>
+
+<p>
+
+Levels, badges, hearts and rewards.
+
+</p>
+
+</div>
 
 </div>
 
 </section>
 
+<!-- ================= FOOTER ================= -->
+
 <footer>
 
-LinguaTeacher AI © 2026
+<div class="footer-content">
+
+<h2>
+
+LinguaTeacher AI
+
+</h2>
+
+<p>
+
+Powered by Google Gemini AI
+
+</p>
+
+<p>
+
+© 2026 LinguaTeacher AI
+
+</p>
+
+</div>
 
 </footer>
+<!-- ================= LOGIN MODAL ================= -->
+
+<div id="loginModal" class="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeLogin()">&times;</span>
+
+<h2>Welcome Back 👋</h2>
+
+<form action="/login" method="post">
+
+<input
+type="email"
+name="email"
+placeholder="Email"
+required>
+
+<input
+type="password"
+name="password"
+placeholder="Password"
+required>
+
+<button type="submit">
+
+Login
+
+</button>
+
+</form>
+
+<p>
+
+Forgot password?
+
+<a href="/forgot-password">
+
+Reset
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+<!-- ================= REGISTER MODAL ================= -->
+
+<div id="registerModal" class="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeRegister()">&times;</span>
+
+<h2>Create Account 🚀</h2>
+
+<form action="/register" method="post">
+
+<input
+type="text"
+name="username"
+placeholder="Username"
+required>
+
+<input
+type="email"
+name="email"
+placeholder="Email"
+required>
+
+<input
+type="password"
+name="password"
+placeholder="Password"
+required>
+
+<input
+type="password"
+name="confirm_password"
+placeholder="Confirm Password"
+required>
+
+<button type="submit">
+
+Create Account
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script>
+
+function openLogin(){
+
+document.getElementById("loginModal").style.display="flex";
+
+}
+
+function closeLogin(){
+
+document.getElementById("loginModal").style.display="none";
+
+}
+
+function openRegister(){
+
+document.getElementById("registerModal").style.display="flex";
+
+}
+
+function closeRegister(){
+
+document.getElementById("registerModal").style.display="none";
+
+}
+
+window.onclick=function(event){
+
+const login=document.getElementById("loginModal");
+
+const register=document.getElementById("registerModal");
+
+if(event.target==login){
+
+login.style.display="none";
+
+}
+
+if(event.target==register){
+
+register.style.display="none";
+
+}
+
+}
+
+</script>
 
 </body>
 
