@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.middleware.sessions import SessionMiddleware
 
 from backend.app.database import Base, engine
 from backend.app.models.user import User
@@ -24,6 +25,11 @@ MODEL = "models/gemini-2.5-flash-native-audio-latest"
 app = FastAPI(
     title="LinguaTeacher AI",
     version="1.0.0",
+)
+
+app.add_middleware(
+    SessionMiddleware,
+    secret_key="LinguaTeacherAI2026SuperSecretKey"
 )
 
 # Создаем таблицы SQLite

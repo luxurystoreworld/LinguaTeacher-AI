@@ -52,7 +52,7 @@ def register(
     return RedirectResponse(
     url="/login",
     status_code=303
-)
+    )
 
 
 # ---------------- LOGIN ----------------
@@ -64,23 +64,23 @@ def login(
     db: Session = Depends(get_db),
 ):
 
-    user = db.query(User).filter(User.email == email).first()
+    user = db.query(User).filter(
+        User.email == email
+    ).first()
 
     if not user:
-        return {
-            "success": False,
-            "message": "User not found."
-        }
+        return RedirectResponse(
+            url="/login",
+            status_code=303
+        )
 
     if not pwd_context.verify(password, user.password):
-        return {
-            "success": False,
-            "message": "Wrong password."
-        }
+        return RedirectResponse(
+            url="/login",
+            status_code=303
+        )
 
-    return {
-        "success": True,
-        "message": "Login successful.",
-        "username": user.username,
-        "email": user.email
-    }
+    return RedirectResponse(
+        url="/",
+        status_code=303
+    )
