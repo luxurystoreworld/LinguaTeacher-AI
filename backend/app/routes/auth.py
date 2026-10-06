@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, Form
+from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 
@@ -48,10 +49,10 @@ def register(
     db.commit()
     db.refresh(user)
 
-    return {
-        "success": True,
-        "message": "Registration successful."
-    }
+    return RedirectResponse(
+    url="/login",
+    status_code=303
+)
 
 
 # ---------------- LOGIN ----------------
