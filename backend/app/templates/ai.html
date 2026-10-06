@@ -1,139 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinguaTeacher AI</title>
 
-    <link rel="stylesheet" href="/static/css/style.css">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LinguaTeacher AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/static/css/style.css">
+
 </head>
 
-<body>
+<body class="ai-page">
 
-<div class="container">
+<!-- Sidebar -->
 
-<header class="topbar">
+<aside class="sidebar">
 
-    <div class="logo">
-        🧠 LinguaTeacher AI
-    </div>
+<div class="logo">
+🤖 LinguaTeacher AI
+</div>
 
-    <div class="top-right">
+<div class="sidebar-title">
+Languages
+</div>
 
-        <div id="status" class="status disconnected">
-            🔴 Offline
-        </div>
+<ul class="language-list">
 
-        <div id="interaction-status" class="interaction-status hidden"></div>
+<li>🇩🇪 German</li>
 
-        <button class="icon-btn">🌙</button>
+<li>🇬🇧 English</li>
 
-        <button class="icon-btn">⚙️</button>
+<li>🇷🇺 Russian</li>
 
-        <button class="icon-btn">👤</button>
+<li>🇹🇯 Tajik</li>
 
-    </div>
+</ul>
+
+<div class="sidebar-title">
+Recent Lessons
+</div>
+
+<div class="lesson-card">
+German A1
+</div>
+
+<div class="lesson-card">
+Speaking Practice
+</div>
+
+<div class="lesson-card">
+Vocabulary
+</div>
+
+</aside>
+
+<!-- Main -->
+
+<main class="ai-main">
+
+<header class="ai-header">
+
+<h1>AI Language Teacher</h1>
+
+<div class="status">
+
+<span class="online-dot"></span>
+
+Online
+
+</div>
 
 </header>
 
-<main>
+<section class="hero-ai">
 
-<div class="auth-section" id="auth-section">
+<div class="robot-circle">
 
-    <h2>Gemini Live AI</h2>
-
-    <p>Click Connect to start.</p>
-
-    <button id="connectBtn" class="btn">
-        Connect
-    </button>
+🤖
 
 </div>
 
-<div class="session-end-section hidden" id="session-end-section">
+<h2>
 
-    <h2>Session Ended</h2>
+Hello!
 
-    <button id="restartBtn" class="btn">
-        Restart
-    </button>
+</h2>
 
-</div>
+<p>
 
-<div class="app-section hidden" id="app-section">
+I am your personal AI teacher.
 
-<div class="app-grid">
+Let's practice speaking together.
 
-<div class="left-panel">
+</p>
 
-<div class="video-container">
+</section>
 
-<div id="video-placeholder">
-Start camera
-</div>
+<section class="action-buttons">
 
-<video
-id="video-preview"
-autoplay
-playsinline
-muted>
-</video>
+<button class="action-btn">
 
-</div>
+🎤
 
-<div class="controls">
+<span>Speak</span>
 
-<button id="micBtn">
-🎤 Start Mic
 </button>
 
-<button id="cameraBtn">
-📷 Camera
+<button class="action-btn">
+
+📷
+
+<span>Camera</span>
+
 </button>
 
-<button id="screenBtn">
-🖥 Screen
+<button class="action-btn">
+
+💻
+
+<span>Screen</span>
+
 </button>
 
-<button id="disconnectBtn">
-Disconnect
+<button class="action-btn">
+
+💬
+
+<span>Chat</span>
+
 </button>
+
+</section>
+
+<section class="chat-window">
+
+<div class="message ai">
+
+Hello 👋
+
+What language would you like to practice today?
 
 </div>
 
+<div class="message user">
+
+I want to learn German.
+
 </div>
 
-<div class="right-panel">
+<div class="message ai">
 
-<div id="chat-log" class="chat-log"></div>
+Perfect!
 
-<div class="input-area">
+Let's start with speaking.
+
+</div>
+
+</section>
+
+<div class="chat-input">
 
 <input
-id="textInput"
 type="text"
-placeholder="Type message...">
+placeholder="Type your message...">
 
-<button id="sendBtn">
+<button>
+
 Send
+
 </button>
-
-</div>
-
-</div>
-
-</div>
 
 </div>
 
 </main>
 
-</div>
-
-<script src="/static/js/media-handler.js"></script>
-<script src="/static/js/gemini-client.js"></script>
-<script src="/static/js/pcm-processor.js"></script>
-<script src="/static/js/gemini-main.js"></script>
-
 </body>
+
 </html>
