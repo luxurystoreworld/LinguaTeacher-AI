@@ -557,3 +557,98 @@ transform:translateY(0);
 }
 
 }
+/* ===========================
+   MOBILE + TABLET
+=========================== */
+
+@media (max-width:1024px){
+
+.hero-content{
+display:flex;
+flex-direction:column;
+text-align:center;
+gap:40px;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.hero-buttons{
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.hero-stats{
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.language-grid{
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+}
+
+.feature-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.navbar .container{
+flex-direction:column;
+gap:20px;
+}
+
+.menu{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+}
+
+@media (max-width:768px){
+
+.hero{
+padding-top:100px;
+padding-bottom:50px;
+}
+
+.hero h1{
+font-size:36px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.robot-card{
+width:280px;
+height:280px;
+}
+
+.language-grid{
+grid-template-columns:1fr;
+}
+
+.feature-grid{
+grid-template-columns:1fr;
+}
+
+.hero-buttons{
+flex-direction:column;
+align-items:center;
+}
+
+.hero-stats{
+flex-direction:column;
+gap:20px;
+}
+
+.menu{
+display:none;
+}
+
+}
