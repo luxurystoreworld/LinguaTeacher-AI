@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Form
+from fastapi import APIRouter, Depends, Form, Request
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
@@ -59,6 +59,7 @@ def register(
 
 @router.post("/login")
 def login(
+    request: Request,
     email: str = Form(...),
     password: str = Form(...),
     db: Session = Depends(get_db),
@@ -79,6 +80,8 @@ def login(
             url="/login",
             status_code=303
         )
+
+    request.session["user"] = user.username
 
     return RedirectResponse(
         url="/",
