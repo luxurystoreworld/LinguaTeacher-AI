@@ -2,28 +2,33 @@ document.getElementById("hero").innerHTML = `
 
 <section class="hero">
 
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
 <div class="hero-left">
 
 <div class="hero-badge">
-🚀 AI Powered by Google Gemini
+🚀 Powered by Google Gemini AI
 </div>
 
 <h1>
-Speak Any Language
+Learn Languages
+<br>
 with Artificial Intelligence
 </h1>
 
 <p>
-Practice speaking, pronunciation, grammar and vocabulary with your own personal AI teacher available 24/7.
+Practice speaking, grammar, pronunciation and vocabulary with your own AI teacher available 24/7.
 </p>
 
 <div class="hero-buttons">
 
-<a href="/ai" class="start-btn">
+<a href="/ai" class="btn-primary">
 🚀 Try AI Free
 </a>
 
-<a href="/about" class="demo-btn">
+<a href="/about" class="btn-secondary">
 ▶ Watch Demo
 </a>
 
@@ -31,19 +36,19 @@ Practice speaking, pronunciation, grammar and vocabulary with your own personal 
 
 <div class="hero-stats">
 
-<div class="stat">
-<h3>50K+</h3>
-<span>Students</span>
+<div class="stat-box">
+<h2>50K+</h2>
+<p>Students</p>
 </div>
 
-<div class="stat">
-<h3>1000+</h3>
-<span>Lessons</span>
+<div class="stat-box">
+<h2>1000+</h2>
+<p>Lessons</p>
 </div>
 
-<div class="stat">
-<h3>4.9⭐</h3>
-<span>Rating</span>
+<div class="stat-box">
+<h2>4.9 ⭐</h2>
+<p>Rating</p>
 </div>
 
 </div>
@@ -52,19 +57,25 @@ Practice speaking, pronunciation, grammar and vocabulary with your own personal 
 
 <div class="hero-right">
 
-<div class="robot-card">
+<div class="glass-card">
 
 <div class="robot">
 🤖
 </div>
 
-<h2>AI Teacher</h2>
+<h2>LinguaTeacher AI</h2>
 
-<p>Voice • Chat • Grammar</p>
+<p>Your personal AI teacher</p>
 
 <div class="online">
 🟢 Online
 </div>
+
+</div>
+
+<div class="floating-circle circle1"></div>
+<div class="floating-circle circle2"></div>
+<div class="floating-circle circle3"></div>
 
 </div>
 
