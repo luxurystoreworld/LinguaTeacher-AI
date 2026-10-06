@@ -87,3 +87,14 @@ def login(
         url="/",
         status_code=303
     )
+    # ---------------- LOGOUT ----------------
+
+@router.get("/logout")
+def logout(request: Request):
+
+    request.session.clear()
+
+    return RedirectResponse(
+        url="/",
+        status_code=303
+    )

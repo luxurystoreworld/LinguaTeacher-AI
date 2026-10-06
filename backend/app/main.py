@@ -2,40 +2,55 @@ import os
 
 from dotenv import load_dotenv
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 
 from backend.app.database import Base, engine
-from backend.app.models.user import User
 
 from backend.app.routes.voice import router as voice_router
 from backend.app.routes.gemini_ws import router as gemini_ws_router
 from backend.app.routes.auth import router as auth_router
 
-# Загружаем .env
+# ===========================
+# Load .env
+# ===========================
+
 load_dotenv()
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 MODEL = "models/gemini-2.5-flash-native-audio-latest"
 
-# Создаем приложение
+# ===========================
+# Create FastAPI
+# ===========================
+
 app = FastAPI(
     title="LinguaTeacher AI",
     version="1.0.0",
 )
+
+# ===========================
+# Session
+# ===========================
 
 app.add_middleware(
     SessionMiddleware,
     secret_key="LinguaTeacherAI2026SuperSecretKey"
 )
 
-# Создаем таблицы SQLite
+# ===========================
+# Database
+# ===========================
+
 Base.metadata.create_all(bind=engine)
 
+# ===========================
 # CORS
+# ===========================
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -44,15 +59,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Статика
+# ===========================
+# Static files
+# ===========================
+
 app.mount(
     "/static",
     StaticFiles(directory="backend/app/static"),
     name="static",
 )
 
-
-# ---------- HTML ----------
+# ===========================
+# HTML Loader
+# ===========================
 
 def load_page(page: str):
     with open(
@@ -60,63 +79,83 @@ def load_page(page: str):
         "r",
         encoding="utf-8",
     ) as file:
-        return HTMLResponse(file.read())
+        return file.read()
 
+# ===========================
+# Home
+# ===========================
 
 @app.get("/")
-def home():
-    return load_page("index.html")
+def home(request: Request):
 
+    html = load_page("index.html")
 
-@app.get("/german")
-def german():
-    return load_page("german.html")
+    username = request.session.get("user")
 
+    if username:
+        html = html.replace("{{USER}}", username)
+    else:
+        html = html.replace("{{USER}}", "")
 
-@app.get("/german/a1")
-def german_a1():
-    return load_page("a1.html")
+    return HTMLResponse(html)
 
+# ===========================
+# Pages
+# ===========================
 
-@app.get("/german/a1/lesson1")
-def lesson1():
-    return load_page("lesson1.html")
-
-
-@app.get("/english")
-def english():
-    return load_page("english.html")
-
-
-@app.get("/ai")
-def ai():
-    return load_page("ai.html")
-
-
-@app.get("/profile")
-def profile():
-    return load_page("profile.html")
-
-
-@app.get("/about")
-def about():
-    return load_page("about.html")
 @app.get("/login")
-def login():
-    return load_page("login.html")
+def login_page():
+    return HTMLResponse(load_page("login.html"))
 
 
 @app.get("/register")
-def register():
-    return load_page("register.html")
+def register_page():
+    return HTMLResponse(load_page("register.html"))
 
 
 @app.get("/forgot-password")
 def forgot_password():
-    return load_page("forgot_password.html")
+    return HTMLResponse(load_page("forgot_password.html"))
 
-# ---------- API ----------
 
+@app.get("/ai")
+def ai():
+    return HTMLResponse(load_page("ai.html"))
+
+
+@app.get("/about")
+def about():
+    return HTMLResponse(load_page("about.html"))
+
+
+@app.get("/profile")
+def profile():
+    return HTMLResponse(load_page("profile.html"))
+
+
+@app.get("/english")
+def english():
+    return HTMLResponse(load_page("english.html"))
+
+
+@app.get("/german")
+def german():
+    return HTMLResponse(load_page("german.html"))
+
+
+@app.get("/german/a1")
+def german_a1():
+    return HTMLResponse(load_page("a1.html"))
+
+
+@app.get("/german/a1/lesson1")
+def lesson1():
+    return HTMLResponse(load_page("lesson1.html"))
+
+# ===========================
+# Routers
+# ===========================
+
+app.include_router(auth_router)
 app.include_router(voice_router)
 app.include_router(gemini_ws_router)
-app.include_router(auth_router)
