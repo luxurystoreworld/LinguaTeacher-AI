@@ -19,9 +19,14 @@ class ChatRequest(BaseModel):
 
 @router.post("/chat")
 async def chat(data: ChatRequest):
+    try:
+        response = model.generate_content(data.message)
 
-    response = model.generate_content(data.message)
+        return {
+            "reply": response.text
+        }
 
-    return {
-        "reply": response.text
-    }
+    except Exception as e:
+        return {
+            "reply": str(e)
+        }
