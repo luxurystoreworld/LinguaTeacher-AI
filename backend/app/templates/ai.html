@@ -1,117 +1,43 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>LinguaTeacher AI</title>
 
-    <link rel="stylesheet" href="/static/css/style.css">
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LinguaTeacher AI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/static/css/style.css">
+
 </head>
 
 <body>
 
-<div class="sidebar">
+<div id="ai-app">
 
-    <div class="logo">
-        🎓 LinguaTeacher AI
-    </div>
+<div id="sidebar"></div>
 
-    <a href="/">🏠 Dashboard</a>
-    <a href="/german">🇩🇪 German</a>
-    <a href="/english">🇬🇧 English</a>
-    <a href="/ai">🤖 AI Teacher</a>
-    <a href="/about">ℹ️ About</a>
-    <a href="/profile">👤 Profile</a>
+<div id="chat-layout">
 
-</div>
+<div id="chat-header"></div>
 
-<div class="content">
+<div id="chat-window"></div>
 
-    <h1>🤖 AI Teacher</h1>
-
-    <div id="status" class="status">
-        Not Connected
-    </div>
-
-    <div id="interaction-status" class="interaction-status hidden"></div>
-
-    <div id="chat-log" class="chat-box">
-
-        <div class="message gemini">
-            👋 Привет!
-
-            <br><br>
-
-            Я LinguaTeacher AI.
-
-            <br>
-
-            Нажмите «Connect», затем можете говорить голосом,
-            писать сообщения или показывать камеру.
-        </div>
-
-    </div>
-
-    <div class="chat-input">
-
-        <input
-            id="textInput"
-            type="text"
-            placeholder="Введите сообщение..."
-        >
-
-        <button id="sendBtn">
-            ➤
-        </button>
-
-    </div>
-
-    <br>
-
-    <div>
-
-        <button id="connectBtn">
-            🔗 Connect
-        </button>
-
-        <button id="micBtn">
-            🎤 Start Mic
-        </button>
-
-        <button id="cameraBtn">
-            📷 Camera
-        </button>
-
-        <button id="screenBtn">
-            🖥️ Screen
-        </button>
-
-        <button id="disconnectBtn">
-            ❌ Disconnect
-        </button>
-
-    </div>
-
-    <br>
-
-    <video
-        id="video-preview"
-        autoplay
-        muted
-        playsinline
-        width="420"
-    ></video>
-
-    <div id="video-placeholder">
-        Camera Preview
-    </div>
+<div id="chat-input"></div>
 
 </div>
 
-<script src="/static/js/gemini-client.js"></script>
-<script src="/static/js/media-handler.js"></script>
-<script src="/static/js/pcm-processor.js"></script>
-<script src="/static/js/gemini-main.js"></script>
+</div>
+
+<script src="/static/js/ai.js"></script>
 
 </body>
 
