@@ -3,10 +3,11 @@ uvicorn[standard]
 jinja2
 python-dotenv
 google-genai
+google-generativeai
 websockets
 sqlalchemy
 passlib==1.7.4
-bcrypt==4.0.1 
+bcrypt==4.0.1
 python-jose[cryptography]
 email-validator
 python-multipart
