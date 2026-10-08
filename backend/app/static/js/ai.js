@@ -124,8 +124,16 @@ sendButton.addEventListener("click", async function () {
 
     console.log("AI:", data.reply);
 
-    alert(data.reply);
+    const messages = document.querySelector(".chat-messages");
 
-    userInput.value = "";
+messages.innerHTML += `
+<div class="user-message">
+${message}
+</div>
 
-}); 
+<div class="ai-message">
+${data.reply}
+</div>
+`;
+
+messages.scrollTop = messages.scrollHeight;
