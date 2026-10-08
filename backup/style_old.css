@@ -1,0 +1,550 @@
+/* =====================================
+   LinguaTeacher AI
+   Professional UI
+===================================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:
+linear-gradient(
+135deg,
+#071a3d 0%,
+#0d2c67 35%,
+#1544a8 70%,
+#2f80ed 100%
+);
+
+color:#ffffff;
+
+overflow-x:hidden;
+
+min-height:100vh;
+
+}
+
+/* ============================= */
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+}
+
+button{
+
+font-family:'Poppins',sans-serif;
+
+cursor:pointer;
+
+border:none;
+
+}
+
+/* ============================= */
+
+.ai-page{
+
+display:grid;
+
+grid-template-columns:280px 1fr;
+
+min-height:100vh;
+
+}
+
+/* ============================= */
+/* SIDEBAR */
+/* ============================= */
+
+.sidebar{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(25px);
+
+border-right:1px solid rgba(255,255,255,.15);
+
+padding:35px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:25px;
+
+}
+
+.logo{
+
+font-size:28px;
+
+font-weight:800;
+
+letter-spacing:.5px;
+
+margin-bottom:20px;
+
+}
+
+.sidebar-title{
+
+font-size:14px;
+
+text-transform:uppercase;
+
+opacity:.7;
+
+letter-spacing:2px;
+
+}
+
+.language-list{
+
+list-style:none;
+
+display:flex;
+
+flex-direction:column;
+
+gap:14px;
+
+}
+
+.language-list li{
+
+padding:14px 18px;
+
+border-radius:14px;
+
+background:rgba(255,255,255,.06);
+
+transition:.35s;
+
+font-weight:500;
+
+}
+
+.language-list li:hover{
+
+background:rgba(255,255,255,.18);
+
+transform:translateX(8px);
+
+}
+
+.lesson-card{
+
+padding:16px;
+
+border-radius:16px;
+
+background:rgba(255,255,255,.06);
+
+transition:.3s;
+
+}
+
+.lesson-card:hover{
+
+background:rgba(255,255,255,.15);
+
+}
+/* ============================= */
+/* MAIN */
+/* ============================= */
+
+.ai-main{
+
+padding:45px 60px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:35px;
+
+}
+
+/* ============================= */
+
+.ai-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.ai-header h1{
+
+font-size:42px;
+
+font-weight:700;
+
+}
+
+.status{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:12px 20px;
+
+background:rgba(255,255,255,.08);
+
+border-radius:50px;
+
+backdrop-filter:blur(20px);
+
+}
+
+.online-dot{
+
+width:12px;
+
+height:12px;
+
+border-radius:50%;
+
+background:#00ff88;
+
+box-shadow:0 0 20px #00ff88;
+
+animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{transform:scale(1);opacity:1;}
+
+50%{transform:scale(1.4);opacity:.5;}
+
+100%{transform:scale(1);opacity:1;}
+
+}
+
+/* ============================= */
+/* ROBOT */
+/* ============================= */
+
+.hero-ai{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+gap:20px;
+
+padding:50px;
+
+background:rgba(255,255,255,.08);
+
+border-radius:35px;
+
+backdrop-filter:blur(30px);
+
+box-shadow:0 20px 60px rgba(0,0,0,.25);
+
+}
+
+.robot-circle{
+
+width:170px;
+
+height:170px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:85px;
+
+background:
+
+linear-gradient(
+135deg,
+#3b82f6,
+#2563eb,
+#1d4ed8
+);
+
+box-shadow:
+
+0 0 60px rgba(59,130,246,.45);
+
+animation:floatRobot 4s ease-in-out infinite;
+
+}
+
+@keyframes floatRobot{
+
+0%{transform:translateY(0);}
+
+50%{transform:translateY(-15px);}
+
+100%{transform:translateY(0);}
+
+}
+
+.hero-ai h2{
+
+font-size:36px;
+
+font-weight:700;
+
+}
+
+.hero-ai p{
+
+font-size:18px;
+
+opacity:.9;
+
+max-width:700px;
+
+line-height:1.8;
+
+}
+/* ============================= */
+/* CHAT */
+/* ============================= */
+
+.chat-window{
+
+flex:1;
+
+min-height:450px;
+
+padding:30px;
+
+border-radius:30px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(25px);
+
+overflow-y:auto;
+
+display:flex;
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.message{
+
+padding:18px 22px;
+
+border-radius:20px;
+
+max-width:75%;
+
+line-height:1.7;
+
+}
+
+.message.ai{
+
+align-self:flex-start;
+
+background:rgba(255,255,255,.14);
+
+}
+
+.message.user{
+
+align-self:flex-end;
+
+background:#2563eb;
+
+}
+
+/* ============================= */
+/* INPUT */
+/* ============================= */
+
+.chat-input{
+
+display:flex;
+
+gap:15px;
+
+margin-top:20px;
+
+}
+
+.chat-input input{
+
+flex:1;
+
+padding:18px 24px;
+
+border:none;
+
+border-radius:18px;
+
+font-size:16px;
+
+outline:none;
+
+background:rgba(255,255,255,.12);
+
+color:white;
+
+backdrop-filter:blur(20px);
+
+}
+
+.chat-input input::placeholder{
+
+color:rgba(255,255,255,.7);
+
+}
+
+.send-btn{
+
+padding:18px 30px;
+
+border-radius:18px;
+
+background:linear-gradient(135deg,#2563eb,#3b82f6);
+
+color:white;
+
+font-weight:700;
+
+transition:.3s;
+
+}
+
+.send-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 15px 35px rgba(37,99,235,.4);
+
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media(max-width:1000px){
+
+.ai-page{
+
+grid-template-columns:1fr;
+
+}
+
+.sidebar{
+
+display:none;
+
+}
+
+.ai-main{
+
+padding:25px;
+
+}
+
+.ai-header{
+
+flex-direction:column;
+
+gap:20px;
+
+text-align:center;
+
+}
+
+.hero-ai{
+
+padding:35px 20px;
+
+}
+
+.robot-circle{
+
+width:130px;
+
+height:130px;
+
+font-size:65px;
+
+}
+
+.chat-input{
+
+flex-direction:column;
+
+}
+
+.send-btn{
+
+width:100%;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.ai-header h1{
+
+font-size:30px;
+
+}
+
+.hero-ai h2{
+
+font-size:28px;
+
+}
+
+.hero-ai p{
+
+font-size:16px;
+
+}
+
+.message{
+
+max-width:100%;
+
+}
+
+}

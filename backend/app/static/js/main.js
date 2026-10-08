@@ -1,54 +1,117 @@
+document.getElementById("navbar").innerHTML = `
+
+<nav class="navbar">
+
+<div class="nav-container">
+
+<a href="/" class="logo">
+
+🤖 LinguaTeacher AI
+
+</a>
+
+<ul class="nav-menu">
+
+<li><a href="/">Home</a></li>
+
+<li><a href="/ai">AI Teacher</a></li>
+
+<li><a href="/german">German</a></li>
+
+<li><a href="/english">English</a></li>
+
+<li><a href="/about">About</a></li>
+
+</ul>
+
+<div class="nav-buttons">
+
+<button class="login-btn" onclick="openLogin()">
+
+Login
+
+</button>
+
+<button class="register-btn" onclick="openRegister()">
+
+Register
+
+</button>
+
+</div>
+
+</div>
+
+</nav>
+
+`;
 document.getElementById("hero").innerHTML = `
 
 <section class="hero">
 
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
 <div class="hero-left">
 
 <div class="hero-badge">
+
 🚀 Powered by Google Gemini AI
+
 </div>
 
 <h1>
+
 Learn Languages
-<br>
 with Artificial Intelligence
+
 </h1>
 
 <p>
-Practice speaking, grammar, pronunciation and vocabulary with your own AI teacher available 24/7.
+
+Your personal AI teacher helps you learn German, English,
+Russian and Tajik through real conversations, pronunciation,
+grammar correction and interactive lessons.
+
 </p>
 
 <div class="hero-buttons">
 
-<a href="/ai" class="btn-primary">
+<a href="/ai" class="start-btn">
+
 🚀 Try AI Free
+
 </a>
 
-<a href="/about" class="btn-secondary">
+<a href="/about" class="demo-btn">
+
 ▶ Watch Demo
+
 </a>
 
 </div>
 
 <div class="hero-stats">
 
-<div class="stat-box">
-<h2>50K+</h2>
+<div class="stat">
+
+<h3>50K+</h3>
+
 <p>Students</p>
+
 </div>
 
-<div class="stat-box">
-<h2>1000+</h2>
+<div class="stat">
+
+<h3>1000+</h3>
+
 <p>Lessons</p>
+
 </div>
 
-<div class="stat-box">
-<h2>4.9 ⭐</h2>
+<div class="stat">
+
+<h3>4.9 ★</h3>
+
 <p>Rating</p>
+
 </div>
 
 </div>
@@ -57,25 +120,31 @@ Practice speaking, grammar, pronunciation and vocabulary with your own AI teache
 
 <div class="hero-right">
 
-<div class="glass-card">
+<div class="robot-card">
 
 <div class="robot">
+
 🤖
+
 </div>
 
-<h2>LinguaTeacher AI</h2>
+<h2>
 
-<p>Your personal AI teacher</p>
+AI Teacher
+
+</h2>
+
+<p>
+
+Voice • Chat • Grammar
+
+</p>
 
 <div class="online">
-🟢 Online
-</div>
+
+🟢 Online 24/7
 
 </div>
-
-<div class="floating-circle circle1"></div>
-<div class="floating-circle circle2"></div>
-<div class="floating-circle circle3"></div>
 
 </div>
 
@@ -84,57 +153,3 @@ Practice speaking, grammar, pronunciation and vocabulary with your own AI teache
 </section>
 
 `;
-// ===========================
-// LOGIN
-// ===========================
-
-function openLogin() {
-    const modal = document.getElementById("loginModal");
-    if (modal) {
-        modal.style.display = "flex";
-    }
-}
-
-function closeLogin() {
-    const modal = document.getElementById("loginModal");
-    if (modal) {
-        modal.style.display = "none";
-    }
-}
-
-// ===========================
-// REGISTER
-// ===========================
-
-function openRegister() {
-    const modal = document.getElementById("registerModal");
-    if (modal) {
-        modal.style.display = "flex";
-    }
-}
-
-function closeRegister() {
-    const modal = document.getElementById("registerModal");
-    if (modal) {
-        modal.style.display = "none";
-    }
-}
-
-// ===========================
-// CLOSE MODAL
-// ===========================
-
-window.onclick = function(event) {
-
-    const login = document.getElementById("loginModal");
-    const register = document.getElementById("registerModal");
-
-    if (login && event.target === login) {
-        closeLogin();
-    }
-
-    if (register && event.target === register) {
-        closeRegister();
-    }
-
-}

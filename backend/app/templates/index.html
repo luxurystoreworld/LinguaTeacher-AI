@@ -4,11 +4,13 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>LinguaTeacher AI</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,258 +21,32 @@
 
 <body>
 
-<header class="navbar">
+<div class="page">
 
-<div class="container">
+<header id="navbar"></header>
 
-<div class="logo">
+<main>
 
-🌍 LinguaTeacher AI
+<section id="hero"></section>
 
-</div>
+<section id="languages"></section>
 
-<nav>
+<section id="features"></section>
 
-<ul class="menu">
+</main>
 
-<li><a href="/">Home</a></li>
-
-<li><a href="/ai">AI Teacher</a></li>
-
-<li><a href="/about">About</a></li>
-
-<li><a href="/profile">Profile</a></li>
-
-</ul>
-
-</nav>
-
-<div class="auth-buttons">
-
-<button class="btn-login" onclick="openLogin()">
-
-Login
-
-</button>
-
-<button class="btn-register" onclick="openRegister()">
-
-Register
-
-</button>
+<footer id="footer"></footer>
 
 </div>
 
-</div>
+<!-- Login Modal -->
 
-</header>
+<div id="loginModal" class="modal"></div>
 
-<section class="hero">
+<!-- Register Modal -->
 
-<div class="container hero-content">
+<div id="registerModal" class="modal"></div>
 
-<div class="hero-left">
-
-<span class="badge">
-
-🚀 AI Powered Language Learning
-
-</span>
-
-<h1>
-
-Learn Languages<br>
-
-with Artificial Intelligence
-
-</h1>
-
-<p>
-
-Practice German, English, Russian and Tajik with your own AI teacher.
-
-Speak naturally, improve pronunciation and learn faster.
-
-</p>
-
-<div class="hero-buttons">
-
-<a href="/ai" class="btn-primary">
-
-Start Learning
-
-</a>
-
-<a href="/about" class="btn-secondary">
-
-How it Works
-
-</a>
-
-</div>
-
-</div>
-
-<div class="hero-right">
-
-<div class="ai-card">
-
-<div class="robot">
-
-🤖
-
-</div>
-
-<h2>AI Teacher</h2>
-
-<p>Available 24/7</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="languages">
-
-<div class="container">
-
-<h2>Choose Your Language</h2>
-
-<div class="language-grid">
-
-<div class="language-card">
-<div class="flag">🇩🇪</div>
-<h3>German</h3>
-<p>A1 → C2</p>
-</div>
-
-<div class="language-card">
-<div class="flag">🇬🇧</div>
-<h3>English</h3>
-<p>A1 → C2</p>
-</div>
-
-<div class="language-card">
-<div class="flag">🇷🇺</div>
-<h3>Russian</h3>
-<p>Native</p>
-</div>
-
-<div class="language-card">
-<div class="flag">🇹🇯</div>
-<h3>Tajik</h3>
-<p>Native</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-<div class="container">
-
-<h2>LinguaTeacher AI</h2>
-
-<p>Your personal AI language teacher.</p>
-
-<p>© 2026 LinguaTeacher AI</p>
-
-</div>
-
-</footer>
-<!-- LOGIN MODAL -->
-
-<div id="loginModal" class="modal">
-
-<div class="modal-box">
-
-<span class="close" onclick="closeLogin()">&times;</span>
-
-<h2>Login</h2>
-
-<form action="/login" method="post">
-
-<input
-type="email"
-name="email"
-placeholder="Email"
-required>
-
-<input
-type="password"
-name="password"
-placeholder="Password"
-required>
-
-<button type="submit">
-Login
-</button>
-
-</form>
-
-<p style="margin-top:15px;text-align:center;">
-
-<a href="/forgot-password">
-Forgot password?
-</a>
-
-</p>
-
-</div>
-
-</div>
-
-<!-- REGISTER MODAL -->
-
-<div id="registerModal" class="modal">
-
-<div class="modal-box">
-
-<span class="close" onclick="closeRegister()">&times;</span>
-
-<h2>Create Account</h2>
-
-<form action="/register" method="post">
-
-<input
-type="text"
-name="username"
-placeholder="Username"
-required>
-
-<input
-type="email"
-name="email"
-placeholder="Email"
-required>
-
-<input
-type="password"
-name="password"
-placeholder="Password"
-required>
-
-<input
-type="password"
-name="confirm_password"
-placeholder="Confirm Password"
-required>
-
-<button type="submit">
-Create Account
-</button>
-
-</form>
-
-</div>
-
-</div>
 <script src="/static/js/main.js"></script>
 
 </body>
