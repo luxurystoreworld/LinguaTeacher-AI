@@ -13,6 +13,7 @@ from backend.app.database import Base, engine
 from backend.app.routes.voice import router as voice_router
 from backend.app.routes.gemini_ws import router as gemini_ws_router
 from backend.app.routes.auth import router as auth_router
+from backend.app.routes.chat import router as chat_router
 
 # ===========================
 # Load .env
@@ -159,3 +160,4 @@ def lesson1():
 app.include_router(auth_router)
 app.include_router(voice_router)
 app.include_router(gemini_ws_router)
+app.include_router(chat_router)

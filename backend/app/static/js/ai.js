@@ -80,21 +80,52 @@ document.getElementById("chat-input").innerHTML = `
 <div class="chat-input-box">
 
 <input
+id="userInput"
 type="text"
 placeholder="Ask me anything...">
 
-<button>
-
+<button id="voiceButton">
 🎤
-
 </button>
 
-<button>
-
+<button id="sendButton">
 ➤
-
 </button>
 
 </div>
 
 `;
+// ==============================
+// SEND MESSAGE
+// ==============================
+
+const sendButton = document.getElementById("sendButton");
+const userInput = document.getElementById("userInput");
+
+sendButton.addEventListener("click", async function () {
+
+    const message = userInput.value.trim();
+
+    if (!message) return;
+
+    console.log("User:", message);
+
+    const response = await fetch("/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: message
+        })
+    });
+
+    const data = await response.json();
+
+    console.log("AI:", data.reply);
+
+    alert(data.reply);
+
+    userInput.value = "";
+
+}); 
