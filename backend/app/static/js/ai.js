@@ -1,139 +1,227 @@
-// ==============================
+// ========================================
+// LinguaTeacher AI — Chat Frontend
+// ========================================
+
 // SIDEBAR
-// ==============================
+const sidebar = document.getElementById("sidebar");
 
-document.getElementById("sidebar").innerHTML = `
+if (sidebar) {
+    sidebar.innerHTML = `
+        <div class="ai-sidebar">
+            <div class="ai-logo">
+                🤖 LinguaTeacher AI
+            </div>
 
-<div class="ai-sidebar">
+            <button class="new-chat" id="newChatButton">
+                ➕ New Chat
+            </button>
 
-<div class="ai-logo">
+            <div class="menu">
+                <a href="/">🏠 Home</a>
+                <a href="/german">🇩🇪 German</a>
+                <a href="/english">🇬🇧 English</a>
+                <a href="/profile">👤 Profile</a>
+                <a href="/about">ℹ️ About</a>
+            </div>
+        </div>
+    `;
+}
 
-🤖 LinguaTeacher AI
-
-</div>
-
-<button class="new-chat">
-
-➕ New Chat
-
-</button>
-
-<div class="menu">
-
-<a href="/">🏠 Home</a>
-
-<a href="/german">🇩🇪 German</a>
-
-<a href="/english">🇬🇧 English</a>
-
-<a href="/profile">👤 Profile</a>
-
-<a href="/about">ℹ About</a>
-
-</div>
-
-</div>
-
-`;
-
-// ==============================
 // CHAT HEADER
-// ==============================
+const chatHeader = document.getElementById("chat-header");
 
-document.getElementById("chat-header").innerHTML = `
+if (chatHeader) {
+    chatHeader.innerHTML = `
+        <div class="chat-header">
+            <h2>AI Teacher</h2>
+            <p>Powered by Google Gemini</p>
+        </div>
+    `;
+}
 
-<div class="chat-header">
-
-<h2>AI Teacher</h2>
-
-<p>Powered by Google Gemini</p>
-
-</div>
-
-`;
-
-// ==============================
 // CHAT WINDOW
-// ==============================
+const chatWindow = document.getElementById("chat-window");
 
-document.getElementById("chat-window").innerHTML = `
+if (chatWindow) {
+    chatWindow.innerHTML = `
+        <div class="chat-messages" id="chatMessages">
+            <div class="ai-message">
+                👋 Hello! I'm your AI Teacher.
+                How can I help you today?
+            </div>
+        </div>
+    `;
+}
 
-<div class="chat-messages">
-
-<div class="ai-message">
-
-👋 Hello! I'm your AI Teacher.
-How can I help you today?
-
-</div>
-
-</div>
-
-`;
-
-// ==============================
 // CHAT INPUT
-// ==============================
+const chatInput = document.getElementById("chat-input");
 
-document.getElementById("chat-input").innerHTML = `
+if (chatInput) {
+    chatInput.innerHTML = `
+        <div class="chat-input-box">
+            <input
+                id="userInput"
+                type="text"
+                placeholder="Ask me anything..."
+                autocomplete="off"
+            >
 
-<div class="chat-input-box">
+            <button id="voiceButton" type="button"
+                    title="Voice input">
+                🎤
+            </button>
 
-<input
-id="userInput"
-type="text"
-placeholder="Ask me anything...">
+            <button id="sendButton" type="button"
+                    title="Send message">
+                ➤
+            </button>
+        </div>
+    `;
+}
 
-<button id="voiceButton">
-🎤
-</button>
-
-<button id="sendButton">
-➤
-</button>
-
-</div>
-
-`;
-// ==============================
-// SEND MESSAGE
-// ==============================
-
-const sendButton = document.getElementById("sendButton");
+// ELEMENTS
 const userInput = document.getElementById("userInput");
+const sendButton = document.getElementById("sendButton");
+const voiceButton = document.getElementById("voiceButton");
+const chatMessages = document.getElementById("chatMessages");
+const newChatButton = document.getElementById("newChatButton");
 
-sendButton.addEventListener("click", async function () {
+// ADD MESSAGE SAFELY
+function addMessage(text, type) {
+    const messageElement = document.createElement("div");
 
+    messageElement.className =
+        type === "user" ? "user-message" : "ai-message";
+
+    // Use textContent to prevent HTML injection.
+    messageElement.textContent = text;
+
+    chatMessages.appendChild(messageElement);
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    return messageElement;
+}
+
+// SEND MESSAGE TO AI
+async function sendMessage() {
     const message = userInput.value.trim();
 
-    if (!message) return;
+    if (!message || sendButton.disabled) {
+        return;
+    }
 
-    console.log("User:", message);
+    // Show user's message in the chat.
+    addMessage(message, "user");
 
-    const response = await fetch("/chat", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            message: message
-        })
+    userInput.value = "";
+    sendButton.disabled = true;
+
+    // Show loading indicator.
+    const loadingMessage = addMessage(
+        "🤖 Thinking...",
+        "ai"
+    );
+
+    try {
+        const response = await fetch("/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: message
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.detail || data.reply ||
+                "The server could not process your request."
+            );
+        }
+
+        if (typeof data.reply !== "string") {
+            throw new Error("The AI returned an invalid response.");
+        }
+
+        // Replace loading message with AI response.
+        loadingMessage.textContent = data.reply;
+
+    } catch (error) {
+        console.error("Chat error:", error);
+
+        loadingMessage.textContent =
+            "❌ Sorry, something went wrong. Please try again.";
+
+    } finally {
+        sendButton.disabled = false;
+        userInput.focus();
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+}
+
+// SEND BUTTON
+sendButton.addEventListener("click", sendMessage);
+
+// ENTER KEY
+userInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        sendMessage();
+    }
+});
+
+// NEW CHAT
+newChatButton.addEventListener("click", function () {
+    chatMessages.innerHTML = `
+        <div class="ai-message">
+            👋 Hello! I'm your AI Teacher.
+            How can I help you today?
+        </div>
+    `;
+
+    userInput.value = "";
+    userInput.focus();
+});
+
+// VOICE INPUT
+if (
+    "webkitSpeechRecognition" in window ||
+    "SpeechRecognition" in window
+) {
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "en-US";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    voiceButton.addEventListener("click", function () {
+        recognition.start();
     });
 
-    const data = await response.json();
+    recognition.onresult = function (event) {
+        userInput.value =
+            event.results[0][0].transcript;
 
-    console.log("AI:", data.reply);
+        userInput.focus();
+    };
 
-    const messages = document.querySelector(".chat-messages");
+    recognition.onerror = function (event) {
+        console.error("Voice input error:", event.error);
+    };
 
-messages.innerHTML += `
-<div class="user-message">
-${message}
-</div>
-
-<div class="ai-message">
-${data.reply}
-</div>
-`;
-
-messages.scrollTop = messages.scrollHeight;
+} else {
+    voiceButton.addEventListener("click", function () {
+        addMessage(
+            "Voice input is not supported in this browser. Please type your message.",
+            "ai"
+        );
+    });
+}
