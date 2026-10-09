@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>LinguaTeacher AI 2.0</title>
@@ -22,6 +21,69 @@
 <body>
 
 <div id="app">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            🤖 LinguaTeacher
+        </div>
+
+        <div class="menu">
+
+            <button id="newChatButton">➕ New Chat</button>
+
+            <button>🇩🇪 German</button>
+
+            <button>🇬🇧 English</button>
+
+            <button id="settingsButton">⚙️ Settings</button>
+
+        </div>
+
+    </aside>
+
+    <main class="main">
+
+        <header class="header">
+
+            <h2>Gemini AI Teacher</h2>
+
+            <div>
+
+                <button class="circle" id="cameraButton">📷</button>
+
+                <button class="circle" id="fileButton">📎</button>
+
+                <button class="circle" id="voiceButton">🎤</button>
+
+            </div>
+
+        </header>
+
+        <section
+            class="chat"
+            id="chatMessages">
+
+        </section>
+
+        <footer class="bottom">
+
+            <input
+                id="userInput"
+                type="text"
+                placeholder="Ask anything...">
+
+            <button
+                class="circle"
+                id="sendButton">
+
+                ➤
+
+            </button>
+
+        </footer>
+
+    </main>
 
 </div>
 

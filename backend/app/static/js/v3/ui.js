@@ -2,7 +2,6 @@
 // LinguaTeacher AI v3 UI
 // ======================================
 
-let AI = {};
 
 function initUI() {
 
