@@ -1,5 +1,5 @@
 // ======================================
-// LinguaTeacher AI Voice
+// LinguaTeacher AI Voice v2
 // ======================================
 
 let recognition = null;
@@ -31,15 +31,21 @@ function initVoice() {
 
     recognition.continuous = false;
 
+    recognition.maxAlternatives = 1;
+
     recognition.onstart = () => {
 
         AI.voice.innerHTML = "🔴";
+
+        AI.voice.style.background = "#dc2626";
 
     };
 
     recognition.onend = () => {
 
         AI.voice.innerHTML = "🎤";
+
+        AI.voice.style.background = "";
 
     };
 
@@ -55,13 +61,25 @@ function initVoice() {
 
         AI.input.value = text;
 
-        AI.input.focus();
-
     };
 
     recognition.onerror = (event) => {
 
-        console.log(event.error);
+        console.log("Voice error:", event.error);
+
+    };
+
+    recognition.onend = () => {
+
+        AI.voice.innerHTML = "🎤";
+
+        AI.voice.style.background = "";
+
+        if (AI.input.value.trim() !== "") {
+
+            sendMessage();
+
+        }
 
     };
 
