@@ -1,6 +1,8 @@
-// ========================================
-// LinguaTeacher AI v3 Chat
-// ========================================
+// ======================================
+// LinguaTeacher AI Chat v4
+// ======================================
+
+let conversation = [];
 
 function initChat() {
 
@@ -8,9 +10,9 @@ function initChat() {
 
     AI.send.onclick = sendMessage;
 
-    AI.input.addEventListener("keydown", function(e){
+    AI.input.addEventListener("keydown", function (e) {
 
-        if(e.key==="Enter" && !e.shiftKey){
+        if (e.key === "Enter" && !e.shiftKey) {
 
             e.preventDefault();
 
@@ -22,71 +24,68 @@ function initChat() {
 
 }
 
-async function sendMessage(){
+async function sendMessage() {
 
     const text = AI.input.value.trim();
 
-    if(!text) return;
+    if (!text) return;
 
-    createMessage(text,"user");
+    createMessage(text, "user");
 
-    AI.input.value="";
+    conversation.push({
+        role: "user",
+        content: text
+    });
+
+    AI.input.value = "";
 
     createThinking();
 
-    AI.send.disabled=true;
+    AI.send.disabled = true;
 
-    try{
+    try {
 
-        const response=await fetch("/chat",{
+        const response = await fetch("/chat", {
 
-            method:"POST",
+            method: "POST",
 
-            headers:{
-                "Content-Type":"application/json"
+            headers: {
+                "Content-Type": "application/json"
             },
 
-            body:JSON.stringify({
+            body: JSON.stringify({
 
-                message:text
+                message: text,
+
+                history: conversation
 
             })
 
         });
 
-        const data=await response.json();
+        const data = await response.json();
 
         removeThinking();
 
-        if (data.reply) {
+        createMessage(data.reply, "ai");
 
-    createMessage(data.reply, "ai");
+        conversation.push({
 
-    if (typeof speak === "function") {
+            role: "assistant",
 
-        speak(data.reply);
+            content: data.reply
 
-    }
+        });
 
-} else {
-
-    createMessage("❌ Empty response", "ai");
-
-}
-
-    }
-
-    catch(error){
-
-        console.error(error);
+    } catch (err) {
 
         removeThinking();
 
-        createMessage("❌ Connection error","ai");
+        createMessage("❌ Connection error", "ai");
 
     }
 
-    AI.send.disabled=false;
+    AI.send.disabled = false;
 
     AI.input.focus();
 
