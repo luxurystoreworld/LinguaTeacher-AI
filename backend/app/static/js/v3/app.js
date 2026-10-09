@@ -36,6 +36,11 @@ window.addEventListener("DOMContentLoaded", () => {
     if (typeof initChat === "function") initChat();
 
     if (typeof initVoice === "function") initVoice();
+    if (typeof VoiceEngine !== "undefined") {
+
+    VoiceEngine.init();
+
+}
 
     if (typeof initCamera === "function") initCamera();
 

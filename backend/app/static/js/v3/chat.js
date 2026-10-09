@@ -67,15 +67,13 @@ async function sendMessage() {
 
         removeThinking();
 
-        createMessage(data.reply, "ai");
+        createMessage(data.reply,"ai");
 
-        conversation.push({
+if (typeof VoiceEngine !== "undefined") {
 
-            role: "assistant",
+    VoiceEngine.speak(data.reply);
 
-            content: data.reply
-
-        });
+}
 
     } catch (err) {
 
