@@ -105,12 +105,12 @@ def home(request: Request):
 # ===========================
 
 @app.get("/login")
-def login_page():
+def login():
     return HTMLResponse(load_page("login.html"))
 
 
 @app.get("/register")
-def register_page():
+def register():
     return HTMLResponse(load_page("register.html"))
 
 
@@ -122,6 +122,11 @@ def forgot_password():
 @app.get("/ai")
 def ai():
     return HTMLResponse(load_page("ai.html"))
+
+
+@app.get("/chat")
+def chat():
+    return HTMLResponse(load_page("chat.html"))
 
 
 @app.get("/about")
