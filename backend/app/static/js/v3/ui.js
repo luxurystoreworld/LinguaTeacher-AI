@@ -1,83 +1,28 @@
-// =======================================
-// LinguaTeacher AI 2.0 UI
-// =======================================
+// ======================================
+// LinguaTeacher AI v3 UI
+// ======================================
 
 let AI = {};
 
 function initUI() {
 
-    document.getElementById("app").innerHTML = `
+    AI.messages = document.getElementById("chatMessages");
 
-<div class="sidebar">
-
-    <div class="logo">
-        🤖 LinguaTeacher
-    </div>
-
-    <div class="menu">
-
-        <button id="newChat">
-            ➕ New Chat
-        </button>
-
-        <button>
-            🇩🇪 German
-        </button>
-
-        <button>
-            🇬🇧 English
-        </button>
-
-        <button>
-            ⚙ Settings
-        </button>
-
-    </div>
-
-</div>
-
-<div class="main">
-
-    <div class="header">
-
-        <h2>Gemini AI Teacher</h2>
-
-        <div>
-
-            <button class="circle" id="cameraBtn">📷</button>
-
-            <button class="circle" id="fileBtn">📎</button>
-
-            <button class="circle" id="voiceBtn">🎤</button>
-
-        </div>
-
-    </div>
-
-    <div class="chat" id="messages">
-
-    </div>
-
-    <div class="bottom">
-
-        <input
-            id="userInput"
-            placeholder="Ask anything..."
-        >
-
-        <button class="circle send" id="sendBtn">
-            ➤
-        </button>
-
-    </div>
-
-</div>
-
-`;
-
-    AI.messages = document.getElementById("messages");
     AI.input = document.getElementById("userInput");
-    AI.send = document.getElementById("sendBtn");
+
+    AI.send = document.getElementById("sendButton");
+
+    AI.voice = document.getElementById("voiceButton");
+
+    AI.camera = document.getElementById("cameraButton");
+
+    AI.files = document.getElementById("fileButton");
+
+    AI.settings = document.getElementById("settingsButton");
+
+    AI.history = [];
+
+    console.log("LinguaTeacher AI UI loaded");
 
     createMessage(
         "👋 Hello! I'm LinguaTeacher AI. How can I help you today?",
@@ -88,29 +33,94 @@ function initUI() {
 
 function createMessage(text, sender = "ai") {
 
-    const message = document.createElement("div");
+    if (!AI.messages) return;
 
-    message.className = "message " + sender;
+    const wrapper = document.createElement("div");
 
-    message.innerHTML = `
-        <div class="bubble">
-            ${text}
-        </div>
-    `;
+    wrapper.className =
+        sender === "user"
+            ? "user-message"
+            : "ai-message";
 
-    AI.messages.appendChild(message);
+    const bubble = document.createElement("div");
 
-    AI.messages.scrollTop = AI.messages.scrollHeight;
+    bubble.className =
+        sender === "user"
+            ? "bubble user-bubble"
+            : "bubble ai-bubble";
 
-    return message;
+    bubble.textContent = text;
+
+    wrapper.appendChild(bubble);
+
+    AI.messages.appendChild(wrapper);
+
+    AI.history.push({
+        sender: sender,
+        text: text,
+        time: new Date()
+    });
+
+    scrollBottom();
 
 }
 
 function createThinking() {
 
-    return createMessage(
-        "🤖 Thinking...",
+    if (!AI.messages) return;
+
+    removeThinking();
+
+    const wrapper = document.createElement("div");
+
+    wrapper.className = "ai-message";
+
+    wrapper.id = "thinking";
+
+    wrapper.innerHTML = `
+        <div class="bubble ai-bubble">
+            🤖 Thinking...
+        </div>
+    `;
+
+    AI.messages.appendChild(wrapper);
+
+    scrollBottom();
+
+}
+
+function removeThinking() {
+
+    const thinking = document.getElementById("thinking");
+
+    if (thinking) {
+
+        thinking.remove();
+
+    }
+
+}
+
+function clearChat() {
+
+    if (!AI.messages) return;
+
+    AI.messages.innerHTML = "";
+
+    AI.history = [];
+
+    createMessage(
+        "👋 Hello! I'm LinguaTeacher AI. How can I help you today?",
         "ai"
     );
+
+}
+
+function scrollBottom() {
+
+    if (!AI.messages) return;
+
+    AI.messages.scrollTop =
+        AI.messages.scrollHeight;
 
 }

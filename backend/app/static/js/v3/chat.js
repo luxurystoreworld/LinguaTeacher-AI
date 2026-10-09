@@ -58,15 +58,21 @@ async function sendMessage(){
 
         removeThinking();
 
-        if(data.reply){
+        if (data.reply) {
 
-            createMessage(data.reply,"ai");
+    createMessage(data.reply, "ai");
 
-        }else{
+    if (typeof speak === "function") {
 
-            createMessage("❌ Empty response","ai");
+        speak(data.reply);
 
-        }
+    }
+
+} else {
+
+    createMessage("❌ Empty response", "ai");
+
+}
 
     }
 
