@@ -88,19 +88,31 @@ const newChatButton = document.getElementById("newChatButton");
 
 // ADD MESSAGE SAFELY
 function addMessage(text, type) {
-    const messageElement = document.createElement("div");
 
-    messageElement.className =
-        type === "user" ? "user-message" : "ai-message";
+    const wrapper = document.createElement("div");
 
-    // Use textContent to prevent HTML injection.
-    messageElement.textContent = text;
+    wrapper.className =
+        type === "user"
+            ? "user-message"
+            : "ai-message";
 
-    chatMessages.appendChild(messageElement);
+    const bubble = document.createElement("div");
+
+    bubble.className =
+        type === "user"
+            ? "bubble user-bubble"
+            : "bubble ai-bubble";
+
+    bubble.textContent = text;
+
+    wrapper.appendChild(bubble);
+
+    chatMessages.appendChild(wrapper);
 
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    return messageElement;
+    return bubble;
+
 }
 
 // SEND MESSAGE TO AI
